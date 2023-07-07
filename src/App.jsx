@@ -8,19 +8,13 @@ function App() {
   const [showData, setShowData] = useState(userData);
   const [dataFind, setDataFind] = useState([]);
   const [value, setValue] = useState("");
+  const [search, setSearch] = useState("")
 
   const findData = (event) => {
     setValue(event.target.value);
     var query = event.target.value;
-    // console.log(query);
-    if (query.length > 0) {
-      const array = showData.filter(
-        (showData) =>
-          showData.first_name.includes(query)
-      );
-      query = array;
-      setDataFind([...query]);
-    }
+    const array = showData.filter((data) => data.first_name.includes(query));
+    setDataFind([...array])
   };
 
   return (
@@ -51,6 +45,9 @@ function App() {
             className="profile__search"
             value={value}
             onChange={findData}
+            // onChange={(e) => {
+            //   setDataFind(e.target.value);
+            // }}
           />
         </div>
       </div>
@@ -58,6 +55,14 @@ function App() {
       <div className="main">
         <div className="user__list">
           <ul>
+            {/* {showData
+              .filter((item) => {
+                return dataFind.toLowerCase() === ""
+                  ? item
+                  : item.first_name.toLowerCase().includes(dataFind);
+              })
+              .map((user) => {
+                return ( */}
             {showData.map((user) => {
               return (
                 <li key={user.id}>
