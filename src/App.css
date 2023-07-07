@@ -111,6 +111,9 @@ body {
   padding: 10px 20px;
   background-color: white;
   box-shadow: 0 2px 8px 0 rgba(99, 99, 99, 0.2);
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .user__list__box {
